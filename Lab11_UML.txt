@@ -1,0 +1,83 @@
+@startuml
+title SWENG421 Lab 11 Calculator Class Diagram
+
+skinparam classAttributeIconSize 0
+
+package SWENG421_Lab11 {
+
+    class CalculatorContext {
+        - _state : ICalculatorState
+        - {static} Operations : Dictionary<char, Func<double, double, double>>
+        + Operand1 : double
+        + LastOperator : char?
+        + LastOperand2 : double
+        + DisplayValue : string
+        + CalculatorContext()
+        + SetState(state : ICalculatorState) : void
+        + Compute(a : double, op : char, b : double) : double
+        + Reset() : void
+        + DigitPressed(digit : char) : void
+        + OperatorPressed(op : char) : void
+        + EqualsPressed() : void
+        + ClearPressed() : void
+        + DecimalPointPressed() : void
+        + NegatePressed() : void
+        + BackspacePressed() : void
+        + SqrtPressed() : void
+        + ReciprocalPressed() : void
+        + {static} ParseDisplay(display : string) : double
+        + {static} FormatDouble(value : double) : string
+    }
+
+    interface ICalculatorState {
+        + HandleDigit(ctx : CalculatorContext, digit : char) : void
+        + HandleOperator(ctx : CalculatorContext, op : char) : void
+        + HandleEquals(ctx : CalculatorContext) : void
+        + HandleClear(ctx : CalculatorContext) : void
+        + HandleDecimalPoint(ctx : CalculatorContext) : void
+        + HandleNegate(ctx : CalculatorContext) : void
+        + HandleBackspace(ctx : CalculatorContext) : void
+        + HandleSqrt(ctx : CalculatorContext) : void
+        + HandleReciprocal(ctx : CalculatorContext) : void
+    }
+
+    class Program {
+        + Main(_ : string[]) : void
+    }
+}
+
+package SWENG421_Lab11.States {
+    class InitialState
+    class FirstOperandState
+    class OperatorPressedState
+    class SecondOperandState
+    class ResultState
+}
+
+ICalculatorState <|.. InitialState
+ICalculatorState <|.. FirstOperandState
+ICalculatorState <|.. OperatorPressedState
+ICalculatorState <|.. SecondOperandState
+ICalculatorState <|.. ResultState
+
+CalculatorContext --> ICalculatorState : state
+Program ..> CalculatorContext : uses
+
+InitialState ..> FirstOperandState
+InitialState ..> OperatorPressedState
+InitialState ..> ResultState
+
+FirstOperandState ..> InitialState
+FirstOperandState ..> OperatorPressedState
+FirstOperandState ..> ResultState
+
+OperatorPressedState ..> SecondOperandState
+OperatorPressedState ..> ResultState
+
+SecondOperandState ..> OperatorPressedState
+SecondOperandState ..> ResultState
+
+ResultState ..> FirstOperandState
+ResultState ..> OperatorPressedState
+
+@enduml
