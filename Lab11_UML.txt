@@ -47,11 +47,65 @@ package SWENG421_Lab11 {
 }
 
 package SWENG421_Lab11.States {
-    class InitialState
-    class FirstOperandState
-    class OperatorPressedState
-    class SecondOperandState
-    class ResultState
+    class InitialState {
+        + HandleDigit(ctx : CalculatorContext, digit : char) : void
+        + HandleOperator(ctx : CalculatorContext, op : char) : void
+        + HandleEquals(ctx : CalculatorContext) : void
+        + HandleClear(ctx : CalculatorContext) : void
+        + HandleDecimalPoint(ctx : CalculatorContext) : void
+        + HandleNegate(ctx : CalculatorContext) : void
+        + HandleBackspace(ctx : CalculatorContext) : void
+        + HandleSqrt(ctx : CalculatorContext) : void
+        + HandleReciprocal(ctx : CalculatorContext) : void
+    }
+
+    class FirstOperandState {
+        + HandleDigit(ctx : CalculatorContext, digit : char) : void
+        + HandleOperator(ctx : CalculatorContext, op : char) : void
+        + HandleEquals(ctx : CalculatorContext) : void
+        + HandleClear(ctx : CalculatorContext) : void
+        + HandleDecimalPoint(ctx : CalculatorContext) : void
+        + HandleNegate(ctx : CalculatorContext) : void
+        + HandleBackspace(ctx : CalculatorContext) : void
+        + HandleSqrt(ctx : CalculatorContext) : void
+        + HandleReciprocal(ctx : CalculatorContext) : void
+    }
+
+    class OperatorPressedState {
+        + HandleDigit(ctx : CalculatorContext, digit : char) : void
+        + HandleOperator(ctx : CalculatorContext, op : char) : void
+        + HandleEquals(ctx : CalculatorContext) : void
+        + HandleClear(ctx : CalculatorContext) : void
+        + HandleDecimalPoint(ctx : CalculatorContext) : void
+        + HandleNegate(ctx : CalculatorContext) : void
+        + HandleBackspace(ctx : CalculatorContext) : void
+        + HandleSqrt(ctx : CalculatorContext) : void
+        + HandleReciprocal(ctx : CalculatorContext) : void
+    }
+
+    class SecondOperandState {
+        + HandleDigit(ctx : CalculatorContext, digit : char) : void
+        + HandleOperator(ctx : CalculatorContext, op : char) : void
+        + HandleEquals(ctx : CalculatorContext) : void
+        + HandleClear(ctx : CalculatorContext) : void
+        + HandleDecimalPoint(ctx : CalculatorContext) : void
+        + HandleNegate(ctx : CalculatorContext) : void
+        + HandleBackspace(ctx : CalculatorContext) : void
+        + HandleSqrt(ctx : CalculatorContext) : void
+        + HandleReciprocal(ctx : CalculatorContext) : void
+    }
+
+    class ResultState {
+        + HandleDigit(ctx : CalculatorContext, digit : char) : void
+        + HandleOperator(ctx : CalculatorContext, op : char) : void
+        + HandleEquals(ctx : CalculatorContext) : void
+        + HandleClear(ctx : CalculatorContext) : void
+        + HandleDecimalPoint(ctx : CalculatorContext) : void
+        + HandleNegate(ctx : CalculatorContext) : void
+        + HandleBackspace(ctx : CalculatorContext) : void
+        + HandleSqrt(ctx : CalculatorContext) : void
+        + HandleReciprocal(ctx : CalculatorContext) : void
+    }
 }
 
 ICalculatorState <|.. InitialState
